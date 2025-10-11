@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,7 +18,7 @@ public class MainController {
     private static final double APP_H = 650;
 
     // Input on the Define page
-    @FXML private TextArea nameInput;
+    @FXML private TextField nameInput;
 
     // switch scenes and a fixed window size
     private void setScene(Stage stage, String fxml, String title) throws IOException {
