@@ -37,10 +37,9 @@
     </HBox>
 
     <VBox maxWidth="820" spacing="8">
-    <Label text="Saved languages:" />
     <TableView fx:id="langTable" prefHeight="320">
         <columns>
-            <TableColumn fx:id="nameCol" prefWidth="800" text="Languages" />
+            <TableColumn fx:id="nameCol" prefWidth="800" text="Saved Programming Languages" />
         </columns>
     </TableView>
 </VBox>
