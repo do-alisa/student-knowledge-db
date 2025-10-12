@@ -1,8 +1,8 @@
 # Name of application: StudentKnowledgeDB
-# Version: 0.2
+# Version: 0.3
 
 # who did what:
-1. Alisa Do - Home Page, navigation to Define Programming Languages page, project manager
-2. Jiang Du - Define Programming Languages page: Implemented TextArea input, Back, Cancel, and Submit actions.
-3. Jamie O'Neill - Updated UI of Home Page/Define Programming Languages
-3. Cam Hung Phuong
+1. Alisa Do - Fixed TextField
+2. Jiang Du
+3. Jamie O'Neil
+4. Cam Hung Phuong - Added feature showing stored Programming Languages info in a tabular format, sorted alphabetically ascending
