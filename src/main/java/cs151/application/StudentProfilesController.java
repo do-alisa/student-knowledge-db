@@ -50,6 +50,10 @@ public class StudentProfilesController {
     @FXML private TableColumn<StudentProfile, String> langsCol;
     @FXML private TableColumn<StudentProfile, String> dbsCol;
     @FXML private TableColumn<StudentProfile, String> roleCol;
+    @FXML private TableColumn<StudentProfile, String> jobCol;
+    @FXML private TableColumn<StudentProfile, String> commentsCol;
+    @FXML private TableColumn<StudentProfile, String> wlCol;
+    @FXML private TableColumn<StudentProfile, String> blCol;
 
     @FXML private VBox profilesSection;
     @FXML private Button toggleProfilesBtn;
@@ -68,7 +72,7 @@ public class StudentProfilesController {
             List.of("Front-End", "Back-End", "Full-Stack", "Data", "Other");
 
     private static final List<String> DATABASES =
-            List.of("MySQL", "Postgres", "MongoDB", "SQLite", "Oracle", "SQL Server");
+            List.of("MySQL", "Postgres", "MongoDB", "SQLite", "Oracle", "SQL Server", "N/A");
 
     @FXML
     private void initialize() {
@@ -126,6 +130,23 @@ public class StudentProfilesController {
         profilesSection.setVisible(false);
         profilesSection.setManaged(false); // removes it from layout when hidden
         toggleProfilesBtn.setText("View All Profiles");
+
+        jobCol.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(
+                c.getValue().getJobDetails()));
+
+        commentsCol.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(
+                c.getValue().getCommentsAsString()));
+
+        wlCol.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(
+                c.getValue().isWhitelist() ? "Yes" : "No"));
+
+        blCol.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(
+                c.getValue().isBlacklist() ? "Yes" : "No"));
+
+        addCommentBtn.disableProperty().bind(
+                profilesTable.getSelectionModel().selectedItemProperty().isNull()
+        );
+
     }
 
     // Actions

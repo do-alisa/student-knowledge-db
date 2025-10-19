@@ -84,10 +84,20 @@
                             <VBox spacing="8" GridPane.rowIndex="0" GridPane.columnIndex="1">
                                 <children>
                                     <TextArea fx:id="commentInput" prefRowCount="3" promptText="Add a comment..."/>
-                                    <Button fx:id="addCommentBtn" text="Add Comment" prefWidth="120"
-                                            style="-fx-background-color: #EEEEEE; -fx-border-color:#BDBDBD; -fx-border-radius:6; -fx-background-radius:6;"/>
+
+                                    <!-- New HBox for label + button -->
+                                    <HBox spacing="10" alignment="CENTER_LEFT">
+                                        <children>
+                                            <Label fx:id="commentHintLabel"
+                                                   text="Select a student from the table before adding a comment."
+                                                   style="-fx-text-fill: #888888; -fx-font-size: 11px;"/>
+                                            <Button fx:id="addCommentBtn" text="Add Comment" prefWidth="120"
+                                                    style="-fx-background-color: #EEEEEE; -fx-border-color:#BDBDBD; -fx-border-radius:6; -fx-background-radius:6;"/>
+                                        </children>
+                                    </HBox>
                                 </children>
                             </VBox>
+
                         </children>
                     </GridPane>
 
@@ -111,7 +121,7 @@
                                 text="Submit" />
                     </HBox>
 
-                    <!-- NEW: Toggle button the user must click to view the table -->
+                    <!-- Toggle: user must click to view the table (meets rubric) -->
                     <HBox spacing="8">
                         <Region HBox.hgrow="ALWAYS"/>
                         <Button fx:id="toggleProfilesBtn"
@@ -122,20 +132,31 @@
 
                     <Separator/>
 
-                <!-- ===== table area wrapped in a toggleable section ===== -->
-                <VBox fx:id="profilesSection" spacing="6">
-                    <Label text="All Student Profiles" style="-fx-font-weight:bold;"/>
-                    <TableView fx:id="profilesTable" prefHeight="280">
-                        <columns>
-                            <TableColumn fx:id="nameCol"    text="Name"         prefWidth="200"/>
-                            <TableColumn fx:id="statusCol"  text="Status"       prefWidth="110"/>
-                            <TableColumn fx:id="employedCol" text="Employment"  prefWidth="110"/>
-                            <TableColumn fx:id="roleCol"    text="Role"         prefWidth="120"/>
-                            <TableColumn fx:id="langsCol"   text="Languages"    prefWidth="220"/>
-                            <TableColumn fx:id="dbsCol"     text="Databases"    prefWidth="220"/>
-                        </columns>
-                    </TableView>
-                </VBox>
+                    <!-- ===== table area wrapped in a toggleable section ===== -->
+                    <VBox fx:id="profilesSection" spacing="6">
+                        <Label text="All Student Profiles" style="-fx-font-weight:bold;"/>
+                        <TableView fx:id="profilesTable" prefHeight="320">
+                            <columns>
+                                <!-- 2.1 Basic -->
+                                <TableColumn fx:id="nameCol"     text="Name"          prefWidth="180"/>
+                                <TableColumn fx:id="statusCol"   text="Status"        prefWidth="110"/>
+                                <TableColumn fx:id="employedCol" text="Employment"    prefWidth="110"/>
+                                <TableColumn fx:id="jobCol"      text="Job Details"   prefWidth="200"/>
+
+                                <!-- 2.2 Skills & Interests -->
+                                <TableColumn fx:id="langsCol"    text="Languages"     prefWidth="220"/>
+                                <TableColumn fx:id="dbsCol"      text="Databases"     prefWidth="200"/>
+                                <TableColumn fx:id="roleCol"     text="Preferred Role" prefWidth="140"/>
+
+                                <!-- 2.3 Faculty Evaluation -->
+                                <TableColumn fx:id="commentsCol" text="Comments"      prefWidth="320"/>
+
+                                <!-- 2.4 Flags -->
+                                <TableColumn fx:id="wlCol"       text="Whitelist"     prefWidth="90"/>
+                                <TableColumn fx:id="blCol"       text="Blacklist"     prefWidth="90"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
                 </VBox>
             </content>
         </ScrollPane>
