@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="cs151.application.MainController"
+            prefWidth="1000" prefHeight="650">
+
+<padding>
+        <Insets top="24.0" right="24.0" bottom="24.0" left="24.0"/>
+    </padding>
+
+
+    <!-- Center content -->
+    <VBox alignment="CENTER" spacing="20" fillWidth="false">
+        <padding>
+            <Insets top="16.0" bottom="16.0"/>
+        </padding>
+
+        <Label text="StudentKnowledgeDB">
+            <font><Font size="42.0"/></font>
+        </Label>
+
+       <!-- <Button text="Define Programming Languages" onAction="#onGoToDefinePage"/> -->
+        <Button text="Define Programming Languages"
+                onAction="#onGoToDefinePage"
+                prefWidth="280" prefHeight="36"
+                style="-fx-background-color: #FFFFFF;
+                       -fx-text-fill: black;
+                       -fx-border-color: black;
+                       -fx-border-radius: 6;
+                       -fx-background-radius: 6;"/>
+
+
+        <!-- <Button text="Create Student Profile" disable="true"/> -->
+        <Button text="Create Student Profile"
+                onAction="#onGoToCreateProfile"
+                prefWidth="280" prefHeight="36"
+                style="-fx-background-color: #FFFFFF;
+                -fx-text-fill: black;
+                -fx-border-color: black;
+                -fx-border-radius: 6;
+                -fx-background-radius: 6;"/>
+
+    </VBox>
+</StackPane>
