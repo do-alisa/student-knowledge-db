@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs151.application.SearchProfilesController">
+    <top>
+        <VBox spacing="8.0" BorderPane.alignment="CENTER">
+            <padding><Insets bottom="12" left="12" right="12" top="12" /></padding>
+
+            <HBox spacing="12">
+                <Label prefHeight="18.0" prefWidth="103.0" text="Name contains:" />
+                <TextField fx:id="searchName" promptText="e.g., Lee" />
+                <Label prefHeight="16.0" prefWidth="53.0" text="Status:" />
+                <ChoiceBox fx:id="searchStatus" />
+                <Label prefHeight="16.0" prefWidth="76.0" text="Employed:" />
+                <HBox spacing="6">
+                    <RadioButton fx:id="empAnyRadio" prefHeight="18.0" prefWidth="57.0" text="Any" />
+                    <RadioButton fx:id="empYesRadio" prefHeight="17.0" prefWidth="60.0" text="Yes" />
+                    <RadioButton fx:id="empNoRadio" prefHeight="18.0" prefWidth="56.0" text="No" />
+                </HBox>
+                <Label prefHeight="17.0" prefWidth="40.0" text="Role:" />
+                <ChoiceBox fx:id="searchRole" />
+                <CheckBox fx:id="searchWhitelist" prefHeight="18.0" prefWidth="82.0" text="Whitelist" />
+                <CheckBox fx:id="searchBlacklist" prefHeight="17.0" prefWidth="84.0" text="Blacklist" />
+            </HBox>
+
+            <HBox spacing="12">
+                <VBox spacing="6">
+                    <Label text="Languages (multi-select)" />
+                    <ListView fx:id="searchLanguages" prefHeight="120" prefWidth="200" />
+                </VBox>
+                <VBox spacing="6">
+                    <Label text="Databases (multi-select)" />
+                    <ListView fx:id="searchDatabases" prefHeight="120" prefWidth="200" />
+                </VBox>
+                <Button fx:id="btnSearch" text="Search" />
+                <Button fx:id="btnShowAll" text="Show All" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <TableView fx:id="resultsTable">
+            <columns>
+                <TableColumn fx:id="nameCol" prefWidth="160" text="Full Name" />
+                <TableColumn fx:id="statusCol" prefWidth="90" text="Status" />
+                <TableColumn fx:id="employedCol" prefWidth="90" text="Employed" />
+                <TableColumn fx:id="langsCol" prefWidth="160" text="Languages" />
+                <TableColumn fx:id="dbsCol" prefWidth="140" text="Databases" />
+                <TableColumn fx:id="roleCol" prefWidth="100" text="Role" />
+                <TableColumn fx:id="jobCol" prefWidth="160" text="Job Details" />
+                <TableColumn fx:id="wlCol" prefWidth="50" text="WL" />
+                <TableColumn fx:id="blCol" prefWidth="50" text="BL" />
+                <TableColumn fx:id="commentsCol" prefWidth="240" text="Comments" />
+                <TableColumn fx:id="actionCol" prefWidth="90" text="Action" />
+            </columns>
+        </TableView>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" spacing="12">
+            <padding><Insets bottom="10" left="12" right="12" top="10" /></padding>
+            <Button fx:id="btnBack" text="Back to Home" />
+        </HBox>
+    </bottom>
+</BorderPane>

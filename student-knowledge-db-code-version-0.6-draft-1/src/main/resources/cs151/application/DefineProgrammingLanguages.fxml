@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="TOP_CENTER" spacing="24"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="cs151.application.MainController">
+
+    <padding>
+        <Insets bottom="24" left="24" right="24" top="24" />
+    </padding>
+
+    <!-- Back (top-left) -->
+    <HBox alignment="CENTER_LEFT" maxWidth="Infinity">
+        <!--<Hyperlink text="Back" onAction="#onBackToHome"/> -->
+        <Button onAction="#onBackToHome" prefHeight="36" prefWidth="70" style="-fx-background-color: #FFFFFF;                        -fx-font-size: 12;                        -fx-background-radius: 6;                        -fx-border-color: black;                        -fx-border-radius: 6;                        -fx-text-fill: #333;" text="Home" />
+    </HBox>
+
+    <!-- Title -->
+    <Label text="Define Programming Languages">
+        <font><Font size="42" /></font>
+    </Label>
+
+    <!-- Field label -->
+    <Label text="Enter Programming Languages">
+        <font><Font size="20" /></font>
+    </Label>
+
+    <!-- Input -->
+    <TextField fx:id="nameInput" prefWidth="820" promptText="Enter your language: Java, Python, etc." style="-fx-font-size:16;" />
+
+    <!-- Buttons (centered) -->
+    <HBox alignment="CENTER" spacing="24">
+        <Button onAction="#onCancelForm" prefHeight="36" prefWidth="140" style="-fx-background-color: transparent;                        -fx-border-color: #BDBDBD;                        -fx-border-radius: 6;                        -fx-background-radius: 6;                        -fx-text-fill: #333;" text="Cancel" />
+        <Button onAction="#onSubmitLanguage" prefHeight="36" prefWidth="140" style="-fx-background-color: #000000;                        -fx-text-fill: white;                        -fx-background-radius: 6;" text="Submit" />
+    </HBox>
+
+    <VBox maxWidth="820" spacing="8">
+    <TableView fx:id="langTable" prefHeight="320">
+        <columns>
+            <TableColumn fx:id="nameCol" prefWidth="800" text="Saved Programming Languages" />
+        </columns>
+    </TableView>
+</VBox>
+
+</VBox>
