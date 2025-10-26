@@ -90,7 +90,7 @@ public class SearchProfilesController {
                             "Are you sure you want to delete \"" + p.getFullName() + "\"?",
                             ButtonType.OK, ButtonType.CANCEL);
                     confirm.setHeaderText(null);
-                    confirm.setTitle("Confirm Delete");
+                    confirm.setTitle("Confirm Deletion");
                     Optional<ButtonType> choice = confirm.showAndWait();
 
                     if (choice.isPresent() && choice.get() == ButtonType.OK) {

@@ -183,7 +183,7 @@ public class MainController {
     private void onGoToSearchPage(javafx.event.ActionEvent e) throws IOException {
         setScene((Stage)((javafx.scene.Node)e.getSource()).getScene().getWindow(),
                 "/cs151/application/SearchProfiles.fxml",
-                "StudentKnowledgeDB | Search Profiles");
+                "StudentKnowledgeDB | Search Students Profiles");
     }
 
 
