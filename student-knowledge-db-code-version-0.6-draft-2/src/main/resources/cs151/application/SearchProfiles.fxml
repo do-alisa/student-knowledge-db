@@ -27,8 +27,11 @@
                     <ColumnConstraints percentWidth="78"/>
                 </columnConstraints>
 
-                <Label text="Name contains:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                <TextField fx:id="nameLike" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                <TextField fx:id="nameLike"
+                           promptText="Search by name..."
+                           GridPane.rowIndex="0"
+                           GridPane.columnIndex="1" />
 
                 <Label text="Academic Status:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
                 <ChoiceBox fx:id="statusChoice" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
@@ -37,7 +40,7 @@
                 <ChoiceBox fx:id="employmentChoice" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
 
 
-                <Label text="Languages:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <Label text="Programming Languages:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
                 <ChoiceBox fx:id="languagesChoice"
                            GridPane.rowIndex="3" GridPane.columnIndex="1"/>
 
@@ -47,7 +50,7 @@
 
 
 
-                <Label text="Role:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                <Label text="Professional Role:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
                 <ChoiceBox fx:id="roleChoice" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
 
                 <HBox spacing="10" GridPane.rowIndex="6" GridPane.columnIndex="1">
