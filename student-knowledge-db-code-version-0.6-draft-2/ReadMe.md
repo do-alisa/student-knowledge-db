@@ -5,7 +5,7 @@
 ## who did what:
 1. **Alisa Do** – Updated UI labels for clarity
 2. **Jiang Du** – Added default data for three programming languages and five student profiles, and created a new Search Page, implemented a Delete Feature for removing existing student records.
-3. **Jamie O'Neill** - 
+3. **Jamie O'Neill** - UI Changes to all pages to improve application-wide consistancy. Minor changes to the Search page.
 4. **Cam Hung Phuong** – 
 
 ---
