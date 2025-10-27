@@ -79,34 +79,7 @@
                         </children>
                     </GridPane>
 
-                    <!-- ===== 2.3 Faculty Evaluation ===== -->
-                    <Label text="Faculty Evaluation" style="-fx-font-weight:bold; -fx-font-size:14px;"/>
-                    <GridPane hgap="12" vgap="12">
-                        <columnConstraints>
-                            <ColumnConstraints halignment="RIGHT" minWidth="180"/>
-                            <ColumnConstraints hgrow="ALWAYS"/>
-                        </columnConstraints>
-                        <children>
-                            <Label text="Comments / Journal:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                            <VBox spacing="8" GridPane.rowIndex="0" GridPane.columnIndex="1">
-                                <children>
-                                    <TextArea fx:id="commentInput" prefRowCount="3" promptText="Add a comment..."/>
 
-                                    <!-- New HBox for label + button -->
-                                    <HBox spacing="10" alignment="CENTER_LEFT">
-                                        <children>
-                                            <Label fx:id="commentHintLabel"
-                                                   text="Select a student from the table before adding a comment."
-                                                   style="-fx-text-fill: #888888; -fx-font-size: 11px;"/>
-                                            <Button fx:id="addCommentBtn" text="Add Comment" prefWidth="120"
-                                                    style="-fx-background-color: #EEEEEE; -fx-border-color:#BDBDBD; -fx-border-radius:6; -fx-background-radius:6;"/>
-                                        </children>
-                                    </HBox>
-                                </children>
-                            </VBox>
-
-                        </children>
-                    </GridPane>
 
                     <!-- ===== 2.4 Future Services Flags ===== -->
                     <Label text="Future Services Flags" style="-fx-font-weight:bold; -fx-font-size:14px;"/>
@@ -156,15 +129,13 @@
                                 <TableColumn fx:id="dbsCol"      text="Databases"     prefWidth="200"/>
                                 <TableColumn fx:id="roleCol"     text="Preferred Role" prefWidth="140"/>
 
-                                <!-- 2.3 Faculty Evaluation -->
-                                <TableColumn fx:id="commentsCol" text="Comments"      prefWidth="320"/>
+
 
                                 <!-- 2.4 Flags -->
                                 <TableColumn fx:id="wlCol"       text="Whitelist"     prefWidth="90"/>
                                 <TableColumn fx:id="blCol"       text="Blacklist"     prefWidth="90"/>
 
-                                <!-- 操作列：删除 -->
-                                <TableColumn fx:id="delCol"      text="Delete"        prefWidth="90"/>
+
                             </columns>
                         </TableView>
                     </VBox>

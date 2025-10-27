@@ -18,8 +18,7 @@ public class StudentProfile {
     private List<String> databases;          // multi-select, hard-coded list, required
     private String preferredRole;            // [Front-End, Back-End, Full-Stack, Data, Other], required
 
-    // 2.3 Faculty Evaluation
-    private List<String> comments;           // multiple entries accumulated over time
+
 
     // 2.4 Future Services Flags (mutually exclusive)
     private boolean whitelist;
@@ -28,7 +27,6 @@ public class StudentProfile {
     public StudentProfile() {
         this.languages = new ArrayList<>();
         this.databases = new ArrayList<>();
-        this.comments  = new ArrayList<>();
     }
 
     public StudentProfile(String fullName) { this(); this.fullName = fullName; }
@@ -65,16 +63,7 @@ public class StudentProfile {
     public String getPreferredRole() { return preferredRole; }
     public void setPreferredRole(String preferredRole) { this.preferredRole = preferredRole; }
 
-    public List<String> getComments() { return comments; }
-    public void setComments(List<String> comments) {
-        this.comments = (comments == null) ? new ArrayList<>() : new ArrayList<>(comments);
-    }
-    public void addComment(String comment) {
-        if (comment != null && !comment.isBlank()) {
-            String ts = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-            comments.add(ts + " — " + comment.trim());
-        }
-    }
+
 
     public boolean isWhitelist() { return whitelist; }
     public void setWhitelist(boolean whitelist) { this.whitelist = whitelist; }
@@ -84,7 +73,6 @@ public class StudentProfile {
     // Convenience for table display
     public String getLanguagesAsString() { return String.join(", ", languages); }
     public String getDatabasesAsString() { return String.join(", ", databases); }
-    public String getCommentsAsString() { return String.join(" | ", comments); }
 
     @Override
     public String toString() {
@@ -96,7 +84,6 @@ public class StudentProfile {
                 ", languages=" + languages +
                 ", databases=" + databases +
                 ", preferredRole='" + preferredRole + '\'' +
-                ", comments=" + comments +
                 ", whitelist=" + whitelist +
                 ", blacklist=" + blacklist +
                 '}';

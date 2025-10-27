@@ -55,7 +55,6 @@ public final class DefaultThreeLangAndFiveStudents {
         p.setLanguages(List.of("Java"));
         p.setDatabases(List.of("SQLite"));
         p.setPreferredRole("Front-End");
-        p.setComments(List.of("Comment 1"));
         p.setWhitelist(true);
         p.setBlacklist(false);
         store.save(p);
@@ -69,7 +68,6 @@ public final class DefaultThreeLangAndFiveStudents {
         p.setLanguages(List.of("Python"));
         p.setDatabases(List.of("SQLite"));
         p.setPreferredRole("Back-End");
-        p.setComments(List.of("Comment 2"));
         p.setWhitelist(false);
         p.setBlacklist(false);
         store.save(p);
@@ -83,7 +81,6 @@ public final class DefaultThreeLangAndFiveStudents {
         p.setLanguages(List.of("C++", "Java"));
         p.setDatabases(List.of("SQLite"));
         p.setPreferredRole("Full-Stack");
-        p.setComments(List.of("Comment 3"));
         p.setWhitelist(true);
         p.setBlacklist(false);
         store.save(p);
@@ -97,7 +94,6 @@ public final class DefaultThreeLangAndFiveStudents {
         p.setLanguages(List.of("Python", "C++"));
         p.setDatabases(List.of("SQLite"));
         p.setPreferredRole("Data");
-        p.setComments(List.of("Comment 4"));
         p.setWhitelist(false);
         p.setBlacklist(false);
         store.save(p);
@@ -111,7 +107,6 @@ public final class DefaultThreeLangAndFiveStudents {
         p.setLanguages(List.of("Java", "Python"));
         p.setDatabases(List.of("SQLite"));
         p.setPreferredRole("Other");
-        p.setComments(List.of("Comment 5"));
         p.setWhitelist(true);
         p.setBlacklist(false);
         store.save(p);

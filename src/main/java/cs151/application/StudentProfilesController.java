@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -18,9 +17,8 @@ import java.nio.file.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
-/** Controller for Create Student Profile page per spec (save & load CSV). */
+/** Controller for Create Student Profile page (comments removed). */
 public class StudentProfilesController {
-
 
     // 2.1 Basic
     @FXML private TextField fullNameInput;
@@ -33,10 +31,6 @@ public class StudentProfilesController {
     @FXML private ListView<String> languagesList;  // from languages.txt (multi-select)
     @FXML private ListView<String> databasesList;  // hard-coded (multi-select)
     @FXML private ChoiceBox<String> preferredRoleChoice;
-
-    // 2.3 Comments
-    @FXML private TextArea commentInput;
-    @FXML private Button addCommentBtn;
 
     // 2.4 Flags
     @FXML private CheckBox whitelistCheck;
@@ -51,7 +45,6 @@ public class StudentProfilesController {
     @FXML private TableColumn<StudentProfile, String> dbsCol;
     @FXML private TableColumn<StudentProfile, String> roleCol;
     @FXML private TableColumn<StudentProfile, String> jobCol;
-    @FXML private TableColumn<StudentProfile, String> commentsCol;
     @FXML private TableColumn<StudentProfile, String> wlCol;
     @FXML private TableColumn<StudentProfile, String> blCol;
 
@@ -108,9 +101,6 @@ public class StudentProfilesController {
         databasesList.setItems(FXCollections.observableArrayList(new ArrayList<>(DATABASES)));
         databasesList.getItems().sort(String::compareToIgnoreCase);
 
-        // comments
-        addCommentBtn.setOnAction(e -> onAddComment());
-
         // table columns bindings
         nameCol.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(c.getValue().getFullName()));
         statusCol.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(c.getValue().getAcademicStatus()));
@@ -118,6 +108,9 @@ public class StudentProfilesController {
         langsCol.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(c.getValue().getLanguagesAsString()));
         dbsCol.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(c.getValue().getDatabasesAsString()));
         roleCol.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(c.getValue().getPreferredRole()));
+        jobCol.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(c.getValue().getJobDetails()));
+        wlCol.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(c.getValue().isWhitelist() ? "Yes" : "No"));
+        blCol.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(c.getValue().isBlacklist() ? "Yes" : "No"));
 
         // load existing profiles
         profiles.setAll(store.loadAll());
@@ -130,25 +123,6 @@ public class StudentProfilesController {
         profilesSection.setVisible(false);
         profilesSection.setManaged(false); // removes it from layout when hidden
         toggleProfilesBtn.setText("View All Profiles");
-
-        jobCol.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(
-                c.getValue().getJobDetails()));
-
-        commentsCol.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(
-                c.getValue().getCommentsAsString()));
-
-        wlCol.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(
-                c.getValue().isWhitelist() ? "Yes" : "No"));
-
-        blCol.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(
-                c.getValue().isBlacklist() ? "Yes" : "No"));
-
-        addCommentBtn.disableProperty().bind(
-                profilesTable.getSelectionModel().selectedItemProperty().isNull()
-
-
-        );
-
     }
 
     // Actions
@@ -190,10 +164,6 @@ public class StudentProfilesController {
         p.setWhitelist(whitelist);
         p.setBlacklist(blacklist);
 
-        // Add initial comment if any (optional)
-        String firstComment = trimOrEmpty(commentInput.getText());
-        if (!firstComment.isEmpty()) p.addComment(firstComment);
-
         // persist + update table
         store.save(p);
         profiles.add(p);
@@ -216,19 +186,6 @@ public class StudentProfilesController {
         stage.show();
     }
 
-    private void onAddComment() {
-        String txt = trimOrEmpty(commentInput.getText());
-        if (txt.isEmpty()) { warn("Type a comment first."); return; }
-        StudentProfile selected = profilesTable.getSelectionModel().getSelectedItem();
-        if (selected == null) { warn("Select a student in the table to add a comment."); return; }
-        selected.addComment(txt);
-        // Re-save profile by appending a new row OR (better) rebuild the file.
-        // For simplicity, append a new full row for now (spec allows multiple comments over time).
-        store.save(selected);
-        commentInput.clear();
-        info("Comment added.");
-    }
-
     @FXML
     private void onToggleProfiles() {
         boolean nowVisible = !profilesSection.isVisible();
@@ -239,7 +196,6 @@ public class StudentProfilesController {
         profilesSection.setManaged(nowVisible);
         toggleProfilesBtn.setText(nowVisible ? "Hide Profiles" : "View All Profiles");
     }
-
 
     // Helper functions
     private void clearForm() {
@@ -256,12 +212,10 @@ public class StudentProfilesController {
         whitelistCheck.setSelected(false);
         blacklistCheck.setSelected(false);
 
-        commentInput.clear();
         fullNameInput.requestFocus();
     }
 
     private void sortByNameAZ() {
-        // Sort by last name, then full name for consistent order
         FXCollections.sort(profiles, Comparator.comparing((StudentProfile sp) -> sp.getLastName().toLowerCase())
                 .thenComparing(sp -> sp.getFullName().toLowerCase()));
     }

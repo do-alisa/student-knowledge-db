@@ -83,7 +83,6 @@ public class ProfileStore {
                 escape(String.join("|", p.getLanguages())),
                 escape(String.join("|", p.getDatabases())),
                 escape(opt(p.getPreferredRole())),
-                escape(String.join("|", p.getComments())),
                 escape(Boolean.toString(p.isWhitelist())),
                 escape(Boolean.toString(p.isBlacklist()))
         );
@@ -104,7 +103,6 @@ public class ProfileStore {
             p.setLanguages(rawLangs.isBlank() ? List.of() : Arrays.asList(rawLangs.split("\\|")));
             p.setDatabases(List.of());
             p.setPreferredRole("");
-            p.setComments(List.of());
             p.setWhitelist(false);
             p.setBlacklist(false);
             return p;
@@ -118,9 +116,8 @@ public class ProfileStore {
         p.setLanguages(splitPipes(get(cols, 4)));
         p.setDatabases(splitPipes(get(cols, 5)));
         p.setPreferredRole(get(cols, 6));
-        p.setComments(splitPipes(get(cols, 7)));
-        p.setWhitelist(Boolean.parseBoolean(get(cols, 8)));
-        p.setBlacklist(Boolean.parseBoolean(get(cols, 9)));
+        p.setWhitelist(Boolean.parseBoolean(get(cols, 7)));
+        p.setBlacklist(Boolean.parseBoolean(get(cols, 8)));
         return p;
     }
 
