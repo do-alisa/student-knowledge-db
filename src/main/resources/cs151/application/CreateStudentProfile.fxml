@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="cs151.application.StudentProfilesController"
+            prefWidth="1000" prefHeight="650">
+
+    <!--<top>
+        <ToolBar style="-fx-background-color: transparent;">
+
+            <Label text="  Create Student Profile" style="-fx-font-size:18px; -fx-font-weight:bold;"/>
+        </ToolBar>
+    </top>-->
+
+    <center>
+        <ScrollPane fitToWidth="true">
+            <content>
+                <VBox spacing="16.0">
+                    <HBox alignment="CENTER_LEFT" maxWidth="Infinity" fillHeight="false">
+                        <Button onAction="#onBackToHome" prefHeight="18" prefWidth="70"  style="-fx-background-color: #FFFFFF;                        -fx-font-size: 12;                        -fx-background-radius: 6;                        -fx-border-color: black;                        -fx-border-radius: 6;                        -fx-text-fill: #333;" text="Home" />
+                    </HBox>
+                    <HBox alignment="CENTER">
+                        <Label text="Create Student Profile">
+                            <font><Font size="42" /></font>
+                        </Label>
+                    </HBox>
+
+                    <padding><Insets topRightBottomLeft="20"/></padding>
+
+                    <!-- ===== 2.1 Basic Information ===== -->
+                    <Label text="Basic Information" style="-fx-font-weight:bold; -fx-font-size:14px;"/>
+                    <GridPane hgap="12" vgap="12">
+                        <columnConstraints>
+                            <ColumnConstraints halignment="RIGHT" minWidth="180"/>
+                            <ColumnConstraints hgrow="ALWAYS"/>
+                        </columnConstraints>
+                        <children>
+                            <Label text="Full Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                            <TextField fx:id="fullNameInput" promptText="e.g., Alice Lee"
+                                       GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                            <Label text="Academic Status:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                            <ChoiceBox fx:id="academicStatusChoice"
+                                       GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                            <Label text="Current Job Status:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                            <HBox spacing="10" GridPane.rowIndex="2" GridPane.columnIndex="1">
+                                <children>
+                                    <RadioButton fx:id="employedYesRadio" text="Employed"/>
+                                    <RadioButton fx:id="employedNoRadio" text="Not Employed"/>
+                                </children>
+                            </HBox>
+
+                            <Label text="Job Details:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                            <TextField fx:id="jobDetailsInput" promptText="Company / Role / Hours..."
+                                       GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                        </children>
+                    </GridPane>
+
+                    <!-- ===== 2.2 Skills and Interests ===== -->
+                    <Label text="Skills and Interests" style="-fx-font-weight:bold; -fx-font-size:14px;"/>
+                    <GridPane hgap="12" vgap="12">
+                        <columnConstraints>
+                            <ColumnConstraints halignment="RIGHT" minWidth="180"/>
+                            <ColumnConstraints hgrow="ALWAYS"/>
+                        </columnConstraints>
+                        <children>
+                            <Label text="Programming Languages Known:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                            <ListView fx:id="languagesList" prefHeight="120" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                            <Label text="Databases Known:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                            <ListView fx:id="databasesList" prefHeight="120" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                            <Label text="Preferred Professional Role:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                            <ChoiceBox fx:id="preferredRoleChoice" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                        </children>
+                    </GridPane>
+
+                    <!-- ===== 2.3 Faculty Evaluation ===== -->
+                    <Label text="Faculty Evaluation" style="-fx-font-weight:bold; -fx-font-size:14px;"/>
+                    <GridPane hgap="12" vgap="12">
+                        <columnConstraints>
+                            <ColumnConstraints halignment="RIGHT" minWidth="180"/>
+                            <ColumnConstraints hgrow="ALWAYS"/>
+                        </columnConstraints>
+                        <children>
+                            <Label text="Comments / Journal:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                            <VBox spacing="8" GridPane.rowIndex="0" GridPane.columnIndex="1">
+                                <children>
+                                    <TextArea fx:id="commentInput" prefRowCount="3" promptText="Add a comment..."/>
+
+                                    <!-- New HBox for label + button -->
+                                    <HBox spacing="10" alignment="CENTER_LEFT">
+                                        <children>
+                                            <Label fx:id="commentHintLabel"
+                                                   text="Select a student from the table before adding a comment."
+                                                   style="-fx-text-fill: #888888; -fx-font-size: 11px;"/>
+                                            <Button fx:id="addCommentBtn" text="Add Comment" prefWidth="120"
+                                                    style="-fx-background-color: #EEEEEE; -fx-border-color:#BDBDBD; -fx-border-radius:6; -fx-background-radius:6;"/>
+                                        </children>
+                                    </HBox>
+                                </children>
+                            </VBox>
+
+                        </children>
+                    </GridPane>
+
+                    <!-- ===== 2.4 Future Services Flags ===== -->
+                    <Label text="Future Services Flags" style="-fx-font-weight:bold; -fx-font-size:14px;"/>
+                    <HBox spacing="16">
+                        <children>
+                            <CheckBox fx:id="whitelistCheck" text="Whitelist"/>
+                            <CheckBox fx:id="blacklistCheck" text="Blacklist"/>
+                        </children>
+                    </HBox>
+
+                    <!-- ===== Buttons ===== -->
+                    <HBox spacing="12">
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button onAction="#onCancelForm" prefHeight="36" prefWidth="70"
+                                style="-fx-background-color: transparent; -fx-border-color: #BDBDBD; -fx-border-radius: 6; -fx-background-radius: 6; -fx-text-fill: #333;"
+                                text="Cancel" />
+                        <Button onAction="#onSubmitProfile" prefHeight="36" prefWidth="90"
+                                style="-fx-background-color: #000000; -fx-text-fill: white; -fx-background-radius: 6;"
+                                text="Submit" />
+                    </HBox>
+
+                    <!-- Toggle: user must click to view the table (meets rubric) -->
+                    <HBox spacing="8">
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <!--<Button fx:id="toggleProfilesBtn"
+                                text="View All Profiles"
+                                onAction="#onToggleProfiles"
+                                prefHeight="32"/>-->
+                        <Button fx:id="toggleProfilesBtn" onAction="#onToggleProfiles" prefHeight="32" prefWidth="128" style="-fx-background-color: #FFFFFF;                        -fx-font-size: 12;                        -fx-background-radius: 6;                        -fx-border-color: black;                        -fx-border-radius: 6;                        -fx-text-fill: #333;" text="View All Profiles" />
+                    </HBox>
+
+                    <Separator/>
+
+                    <!-- ===== table area wrapped in a toggleable section ===== -->
+                    <VBox fx:id="profilesSection" spacing="6">
+                        <Label text="All Student Profiles" style="-fx-font-weight:bold;"/>
+                        <TableView fx:id="profilesTable" prefHeight="320">
+                            <columns>
+                                <!-- 2.1 Basic -->
+                                <TableColumn fx:id="nameCol"     text="Name"          prefWidth="180"/>
+                                <TableColumn fx:id="statusCol"   text="Status"        prefWidth="110"/>
+                                <TableColumn fx:id="employedCol" text="Employment"    prefWidth="110"/>
+                                <TableColumn fx:id="jobCol"      text="Job Details"   prefWidth="200"/>
+
+                                <!-- 2.2 Skills & Interests -->
+                                <TableColumn fx:id="langsCol"    text="Languages"     prefWidth="220"/>
+                                <TableColumn fx:id="dbsCol"      text="Databases"     prefWidth="200"/>
+                                <TableColumn fx:id="roleCol"     text="Preferred Role" prefWidth="140"/>
+
+                                <!-- 2.3 Faculty Evaluation -->
+                                <TableColumn fx:id="commentsCol" text="Comments"      prefWidth="320"/>
+
+                                <!-- 2.4 Flags -->
+                                <TableColumn fx:id="wlCol"       text="Whitelist"     prefWidth="90"/>
+                                <TableColumn fx:id="blCol"       text="Blacklist"     prefWidth="90"/>
+
+                                <!-- 操作列：删除 -->
+                                <TableColumn fx:id="delCol"      text="Delete"        prefWidth="90"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>
