@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="cs151.application.ProfileDetailController"
+            prefWidth="1000" prefHeight="650">
+
+    <top>
+        <ToolBar>
+            <Button text="Back" onAction="#onCancel"/>
+            <Label text="  "/>
+            <Label text="Edit Student Profile" style="-fx-font-size:18px;-fx-font-weight:bold;"/>
+        </ToolBar>
+    </top>
+
+    <center>
+        <GridPane hgap="12" vgap="12">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <!-- columns: left labels, right inputs -->
+            <columnConstraints>
+                <ColumnConstraints minWidth="180" halignment="RIGHT"/>
+                <ColumnConstraints hgrow="ALWAYS"/>
+            </columnConstraints>
+
+            <!-- Row 0: Name -->
+            <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtName" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <!-- Row 1: Academic Status -->
+            <Label text="Academic Status:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="cmbStatus" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <!-- Row 2: Employment -->
+            <Label text="Employment:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <HBox spacing="8" GridPane.rowIndex="2" GridPane.columnIndex="1">
+                <children>
+                    <CheckBox fx:id="chkEmployed" text="Employed"/>
+                    <Label text="Job Details:"/>
+                    <TextField fx:id="txtJob" prefWidth="320"/>
+                </children>
+            </HBox>
+
+            <!-- Row 3: Professional Role -->
+            <Label text="Professional Role:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="cmbRole" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+            <!-- Row 4: Languages (multi-select) -->
+            <Label text="Languages:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <ListView fx:id="lstLanguages" GridPane.rowIndex="4" GridPane.columnIndex="1" prefHeight="110"/>
+
+            <!-- Row 5: Databases (multi-select) -->
+            <Label text="Databases:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <ListView fx:id="lstDatabases" GridPane.rowIndex="5" GridPane.columnIndex="1" prefHeight="110"/>
+
+            <!-- Row 6: Faculty Evaluation -->
+            <Label text="Faculty Evaluation" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+            <TextArea fx:id="txtFacultyEval"
+                      GridPane.rowIndex="6" GridPane.columnIndex="1"
+                      prefRowCount="4" wrapText="true"
+                      promptText="Add a faculty evaluation..."
+                      GridPane.vgrow="ALWAYS"/>
+
+            <!-- Row 7: Flags -->
+            <Label text="Flags:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+            <HBox spacing="12" GridPane.rowIndex="7" GridPane.columnIndex="1">
+                <children>
+                    <CheckBox fx:id="chkWhitelist" text="Whitelist"/>
+                    <CheckBox fx:id="chkBlacklist" text="Blacklist"/>
+                </children>
+            </HBox>
+
+            <!-- Row 8: Buttons -->
+            <HBox spacing="10" GridPane.rowIndex="8" GridPane.columnIndex="1">
+                <children>
+                    <Button text="Save" onAction="#onSave"/>
+                    <Button text="Cancel" onAction="#onCancel"/>
+                </children>
+            </HBox>
+
+        </GridPane>
+    </center>
+</BorderPane>

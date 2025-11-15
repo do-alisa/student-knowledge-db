@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="650" prefWidth="1000" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="cs151.application.CommentsController">
+    <top>
+        <ToolBar>
+            <Button onAction="#onBack" text="Back" />
+            <Separator />
+            <Label style="-fx-font-size:18px; -fx-font-weight:bold;" text="Student Comments" />
+            <Pane HBox.hgrow="ALWAYS" />
+            <Label fx:id="lblStudent" style="-fx-font-size:14px;" />
+        </ToolBar>
+    </top>
+
+    <center>
+        <VBox spacing="10.0" >
+            <Label text="All comments (newest first)" />
+            <ListView fx:id="lstComments" prefHeight="380" />
+            <Separator />
+            <Label text="Add a new comment (date auto-stamped)" />
+            <TextArea fx:id="txtNewComment" prefRowCount="4" promptText="Type your comment..." />
+            <HBox spacing="10">
+                <Button onAction="#onAddComment" text="Add Comment" />
+                <Label text="(Date will be auto-filled as today; no time)" />
+            </HBox>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+        </VBox>
+
+    </center>
+
+</BorderPane>
