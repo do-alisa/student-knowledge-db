@@ -1,5 +1,33 @@
 # Name of application: StudentKnowledgeDB
 
+
+
+**Version:** 0.8
+## who did what:
+1. **Alisa Do**  – Fixed and refined the Add Comments feature; ensured exactly 5 Student Profiles were populated.
+2. **Jiang Du**  – Tested the Add Comments functionality, verified data persistence, and cleaned up the project folder.
+3. **Jamie O'Neill**- Modified and optimized the UI layout, buttons, and improved the display for the Existing Profiles page.
+4. **Cam Hung Phuong**  – Implemented the Add Comments feature and fixed previous version bugs related to Comments (including issue with exceeding 5 student profiles).
+
+
+
+
+
+
+
+
+
+**Version:** 0.7
+## who did what: 
+1. **Alisa Do**  – Assisted with Brainstorming, Testing, and Debugging of the Edit Student Profile page
+2. **Jiang Du**  – Adding edit Students Profiles pages and store data permanently
+3. **Jamie O'Neill**- Changed profiles detail page to match language used in the rest of the Application, updated UI, fixed minor errors in edit Student Profile
+4. **Cam Hung Phuong**  – Assisted testing and improving the edit Students Profiles pages.
+
+
+
+
+
 **Version:** 0.6
 
 ## who did what:
