@@ -59,5 +59,16 @@
                        -fx-border-color: black;
                        -fx-border-radius: 6;
                        -fx-background-radius: 6;"/>
+
+        <!-- Reports -->
+        <Button text="Reports"
+                onAction="#onGoToReportsPage"
+                prefWidth="280" prefHeight="36"
+                style="-fx-background-color: #FFFFFF;
+               -fx-text-fill: black;
+               -fx-border-color: black;
+               -fx-border-radius: 6;
+               -fx-background-radius: 6;"/>
+
     </VBox>
 </StackPane>

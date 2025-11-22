@@ -186,6 +186,14 @@ public class MainController {
                 "StudentKnowledgeDB | Search Students Profiles");
     }
 
+    @FXML
+    private void onGoToReportsPage(javafx.event.ActionEvent e) throws IOException {
+        setScene((Stage)((javafx.scene.Node)e.getSource()).getScene().getWindow(),
+                "/cs151/application/ReportsView.fxml",
+                "StudentKnowledgeDB | Reports");
+    }
+
+
 
 
 }
