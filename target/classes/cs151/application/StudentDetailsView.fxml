@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="cs151.application.StudentDetailsController"
+            prefWidth="900" prefHeight="600"
+            style="-fx-background-color: #f5f5f5;">
+
+    <!-- Header -->
+    <top>
+        <HBox spacing="16" alignment="CENTER_LEFT" style="-fx-padding: 16;">
+            <Label fx:id="titleLabel" text="Student Details">
+                <font><Font size="24"/></font>
+            </Label>
+            <Pane HBox.hgrow="ALWAYS"/>
+            <Button text="Close" onAction="#onClose"
+                    style="-fx-background-color: #FFFFFF; -fx-border-color: black; -fx-border-radius: 6; -fx-background-radius: 6;"/>
+        </HBox>
+    </top>
+
+    <!-- Content -->
+    <center>
+        <VBox spacing="12" style="-fx-padding: 0 16 16 16;">
+            <!-- Top: read-only form -->
+            <TitledPane text="Profile" expanded="true">
+                <content>
+                    <GridPane hgap="12" vgap="10" style="-fx-padding: 12;">
+                        <columnConstraints>
+                            <ColumnConstraints minWidth="140" halignment="RIGHT"/>
+                            <ColumnConstraints hgrow="ALWAYS"/>
+                            <ColumnConstraints minWidth="140" halignment="RIGHT"/>
+                            <ColumnConstraints hgrow="ALWAYS"/>
+                        </columnConstraints>
+
+                        <Label text="Full Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="fullName" GridPane.rowIndex="0" GridPane.columnIndex="1" editable="false"/>
+
+                        <Label text="Academic Status:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                        <TextField fx:id="status" GridPane.rowIndex="0" GridPane.columnIndex="3" editable="false"/>
+
+                        <Label text="Employed:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <TextField fx:id="employed" GridPane.rowIndex="1" GridPane.columnIndex="1" editable="false"/>
+
+                        <Label text="Job Details:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                        <TextField fx:id="job" GridPane.rowIndex="1" GridPane.columnIndex="3" editable="false"/>
+
+                        <Label text="Languages:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <TextArea fx:id="langs" GridPane.rowIndex="2" GridPane.columnIndex="1" editable="false" wrapText="true" prefRowCount="2"/>
+
+                        <Label text="Databases:" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+                        <TextArea fx:id="dbs" GridPane.rowIndex="2" GridPane.columnIndex="3" editable="false" wrapText="true" prefRowCount="2"/>
+
+                        <Label text="Preferred Role:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <TextField fx:id="role" GridPane.rowIndex="3" GridPane.columnIndex="1" editable="false"/>
+
+                        <Label text="Flag:" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+                        <TextField fx:id="flag" GridPane.rowIndex="3" GridPane.columnIndex="3" editable="false"/>
+                    </GridPane>
+                </content>
+            </TitledPane>
+
+            <!-- Bottom: comments table -->
+            <TitledPane text="Comments" expanded="true" VBox.vgrow="ALWAYS">
+                <content>
+                    <VBox spacing="8" style="-fx-padding: 12;">
+                        <TableView fx:id="commentsTable" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="dateCol" text="Date" prefWidth="180"/>
+                                <TableColumn fx:id="excerptCol" text="Comment (excerpt)" />
+                            </columns>
+                            <placeholder><Label text="No comments yet."/></placeholder>
+                        </TableView>
+                    </VBox>
+                </content>
+            </TitledPane>
+        </VBox>
+    </center>
+</BorderPane>

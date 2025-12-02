@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="cs151.application.ReportsController"
+            prefWidth="1000" prefHeight="650"
+            style="-fx-background-color: #f5f5f5;">
+
+    <!-- Header -->
+    <top>
+        <HBox spacing="16" alignment="CENTER_LEFT" style="-fx-padding: 16;">
+            <Label text="Reports">
+                <font><Font size="28"/></font>
+            </Label>
+            <Pane HBox.hgrow="ALWAYS"/>
+            <Button text="Back to Home" onAction="#onBackToHome"
+                    style="-fx-background-color: #FFFFFF; -fx-border-color: black; -fx-border-radius: 6; -fx-background-radius: 6;"/>
+        </HBox>
+    </top>
+
+    <!-- Controls + Table -->
+    <center>
+        <VBox spacing="14" style="-fx-padding: 0 16 16 16;">
+            <!-- Filter row -->
+            <HBox spacing="16" alignment="CENTER_LEFT">
+                <Label text="Show:"/>
+                <!-- ToggleGroup is set in controller -->
+                <RadioButton fx:id="rbWhitelist" text="Whitelisted" selected="true" onAction="#onToggle"/>
+                <RadioButton fx:id="rbBlacklist" text="Blacklisted" onAction="#onToggle"/>
+                <Pane HBox.hgrow="ALWAYS"/>
+                <Button text="Refresh" onAction="#onRefresh"
+                        style="-fx-background-color: #FFFFFF; -fx-border-color: black; -fx-border-radius: 6; -fx-background-radius: 6;"/>
+            </HBox>
+
+            <!-- Table (note: no columnResizePolicy attribute here) -->
+            <TableView fx:id="table" prefHeight="560">
+                <placeholder>
+                    <Label text="No students found for this report."/>
+                </placeholder>
+
+                <columns>
+                    <TableColumn fx:id="colName" text="Full Name" prefWidth="180"/>
+                    <TableColumn fx:id="colStatus" text="Academic Status" prefWidth="120"/>
+                    <TableColumn fx:id="colEmployed" text="Employed" prefWidth="80"/>
+                    <TableColumn fx:id="colJob" text="Job Details" prefWidth="160"/>
+                    <TableColumn fx:id="colLangs" text="Languages" prefWidth="180"/>
+                    <TableColumn fx:id="colDBs" text="Databases" prefWidth="160"/>
+                    <TableColumn fx:id="colRole" text="Preferred Role" prefWidth="120"/>
+                    <TableColumn fx:id="colFlag" text="Flag" prefWidth="90"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>
