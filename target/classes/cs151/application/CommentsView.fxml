@@ -4,33 +4,95 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="650" prefWidth="1000" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="cs151.application.CommentsController">
+<BorderPane prefHeight="650" prefWidth="1000"
+            xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="cs151.application.CommentsController"
+            style="-fx-background-color: linear-gradient(to bottom, #f7f9fc, #e3f0ff);">
+
+    <!-- Header -->
     <top>
-        <ToolBar>
-            <Button onAction="#onBack" text="Back" />
-            <Separator />
-            <Label style="-fx-font-size:18px; -fx-font-weight:bold;" text="Student Comments" />
-            <Pane HBox.hgrow="ALWAYS" />
-            <Label fx:id="lblStudent" style="-fx-font-size:14px;" />
-        </ToolBar>
+        <HBox spacing="16" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="16" right="24" bottom="8" left="24"/>
+            </padding>
+
+            <Button onAction="#onBack"
+                    text="← Back"
+                    style="-fx-background-color: #ffffff;
+                           -fx-font-size: 12;
+                           -fx-background-radius: 999;
+                           -fx-border-color: #0f4c81;
+                           -fx-border-radius: 999;
+                           -fx-text-fill: #0f4c81;
+                           -fx-padding: 4 14 4 14;"/>
+
+            <Label text="Student Comments"
+                   style="-fx-font-size:18px; -fx-font-weight:bold; -fx-text-fill:#0f4c81;"/>
+
+            <Pane HBox.hgrow="ALWAYS"/>
+
+            <Label fx:id="lblStudent"
+                   style="-fx-font-size:14px; -fx-text-fill:#4c5563;"/>
+        </HBox>
     </top>
 
     <center>
-        <VBox spacing="10.0" >
-            <Label text="All comments (newest first)" />
-            <ListView fx:id="lstComments" prefHeight="380" />
-            <Separator />
-            <Label text="Add a new comment (date auto-stamped)" />
-            <TextArea fx:id="txtNewComment" prefRowCount="4" promptText="Type your comment..." />
-            <HBox spacing="10">
-                <Button onAction="#onAddComment" text="Add Comment" />
-                <Label text="(Date will be auto-filled as today; no time)" />
-            </HBox>
-         <padding>
-            <Insets top="10.0" />
-         </padding>
-        </VBox>
+        <VBox alignment="TOP_CENTER">
+            <padding>
+                <Insets top="8" right="24" bottom="24" left="24"/>
+            </padding>
 
+            <children>
+                <!-- Main card -->
+                <VBox spacing="10.0"
+                      maxWidth="900"
+                      style="-fx-background-color: #ffffff;
+                             -fx-background-radius: 24;
+                             -fx-padding: 20 24 24 24;
+                             -fx-effect: dropshadow(gaussian, rgba(15,76,129,0.16), 24, 0.2, 0, 8);">
+
+                    <Label text="All comments (newest first)"
+                           style="-fx-text-fill:#0f4c81; -fx-font-weight:bold;"/>
+
+                    <ListView fx:id="lstComments"
+                              prefHeight="380"
+                              style="-fx-background-radius: 12;
+                                     -fx-border-radius: 12;
+                                     -fx-border-color: #d0d7e2;"/>
+
+                    <Separator/>
+
+                    <Label text="Add a new comment (date auto-stamped)"
+                           style="-fx-text-fill:#4c5563;"/>
+
+                    <TextArea fx:id="txtNewComment"
+                              prefRowCount="4"
+                              promptText="Type your comment..."
+                              wrapText="true"
+                              style="-fx-background-radius: 10;
+                                     -fx-border-radius: 10;
+                                     -fx-border-color: #d0d7e2;"/>
+
+                    <HBox spacing="10">
+                        <Button onAction="#onAddComment"
+                                text="Add Comment"
+                                style="-fx-background-color: #ff8a3d;
+                                       -fx-text-fill: white;
+                                       -fx-font-weight: bold;
+                                       -fx-background-radius: 999;
+                                       -fx-border-radius: 999;
+                                       -fx-padding: 6 18 6 18;"/>
+                        <Label text="(Date will be auto-filled as today; no time)"
+                               style="-fx-text-fill:#7a8699;"/>
+                    </HBox>
+
+                    <padding>
+                        <Insets top="10.0"/>
+                    </padding>
+                </VBox>
+            </children>
+        </VBox>
     </center>
 
 </BorderPane>
