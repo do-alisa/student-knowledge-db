@@ -1,5 +1,8 @@
 # Name of application: StudentKnowledgeDB
 
+<img width="1504" height="1022" alt="Screenshot 2025-12-05 165342" src="https://github.com/user-attachments/assets/7d2d4b5b-d7f3-4714-8e99-6421240c079a" />
+<img width="1354" height="947" alt="image" src="https://github.com/user-attachments/assets/fa9019c6-7b43-4ec3-bd3f-099f1c1dec00" />
+
 **Version:** 0.9
 ## who did what:
 1. **Alisa Do**  – Implemented Reports page and main functionality.
