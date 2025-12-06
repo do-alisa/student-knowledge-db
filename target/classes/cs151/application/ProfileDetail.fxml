@@ -1,87 +1,185 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
             fx:controller="cs151.application.ProfileDetailController"
-            prefWidth="1000" prefHeight="650">
+            prefWidth="1000" prefHeight="650"
+            style="-fx-background-color: linear-gradient(to bottom, #f7f9fc, #e3f0ff);">
 
+    <!-- Header -->
     <top>
-        <ToolBar>
-            <Button text="Back" onAction="#onCancel"/>
-            <Label text="  "/>
-            <Label text="Edit Student Profile" style="-fx-font-size:18px;-fx-font-weight:bold;"/>
-        </ToolBar>
-    </top>
-
-    <center>
-        <GridPane hgap="12" vgap="12">
+        <HBox spacing="16" alignment="CENTER_LEFT">
             <padding>
-                <Insets top="20" right="20" bottom="20" left="20"/>
+                <Insets top="16" right="24" bottom="8" left="24"/>
             </padding>
 
-            <!-- columns: left labels, right inputs -->
-            <columnConstraints>
-                <ColumnConstraints minWidth="180" halignment="RIGHT"/>
-                <ColumnConstraints hgrow="ALWAYS"/>
-            </columnConstraints>
+            <Button text="← Back"
+                    onAction="#onCancel"
+                    style="-fx-background-color: #ffffff;
+                           -fx-font-size: 12;
+                           -fx-background-radius: 999;
+                           -fx-border-color: #0f4c81;
+                           -fx-border-radius: 999;
+                           -fx-text-fill: #0f4c81;
+                           -fx-padding: 4 14 4 14;"/>
 
-            <!-- Row 0: Name -->
-            <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-            <TextField fx:id="txtName" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label text="Edit Student Profile" style="-fx-text-fill: #0f4c81;">
+                <font>
+                    <Font size="22"/>
+                </font>
+            </Label>
 
-            <!-- Row 1: Academic Status -->
-            <Label text="Academic Status:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-            <ComboBox fx:id="cmbStatus" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Pane HBox.hgrow="ALWAYS"/>
+        </HBox>
+    </top>
 
-            <!-- Row 2: Employment -->
-            <Label text="Employment:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-            <HBox spacing="8" GridPane.rowIndex="2" GridPane.columnIndex="1">
-                <children>
-                    <CheckBox fx:id="chkEmployed" text="Employed"/>
-                    <Label text="Job Details:"/>
-                    <TextField fx:id="txtJob" prefWidth="320"/>
-                </children>
-            </HBox>
+    <!-- Center card with form -->
+    <center>
+        <VBox alignment="TOP_CENTER">
+            <padding>
+                <Insets top="8" right="24" bottom="24" left="24"/>
+            </padding>
+            <children>
+                <VBox spacing="18"
+                      maxWidth="900"
+                      style="-fx-background-color: #ffffff;
+                             -fx-background-radius: 24;
+                             -fx-padding: 24 32 28 32;
+                             -fx-effect: dropshadow(gaussian, rgba(15,76,129,0.16), 24, 0.2, 0, 8);">
 
-            <!-- Row 3: Professional Role -->
-            <Label text="Professional Role:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-            <ComboBox fx:id="cmbRole" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                    <!-- Optional subheading -->
+                    <Label text="Student Details"
+                           style="-fx-text-fill:#6d7a8c; -fx-font-size:13;"/>
 
-            <!-- Row 4: Languages (multi-select) -->
-            <Label text="Languages:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
-            <ListView fx:id="lstLanguages" GridPane.rowIndex="4" GridPane.columnIndex="1" prefHeight="110"/>
+                    <Separator/>
 
-            <!-- Row 5: Databases (multi-select) -->
-            <Label text="Databases:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
-            <ListView fx:id="lstDatabases" GridPane.rowIndex="5" GridPane.columnIndex="1" prefHeight="110"/>
+                    <GridPane hgap="12" vgap="12">
+                        <padding>
+                            <Insets top="12" right="0" bottom="8" left="0"/>
+                        </padding>
 
-            <!-- Row 6: Faculty Evaluation -->
-            <Label text="Faculty Evaluation" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
-            <TextArea fx:id="txtFacultyEval"
-                      GridPane.rowIndex="6" GridPane.columnIndex="1"
-                      prefRowCount="4" wrapText="true"
-                      promptText="Add a faculty evaluation..."
-                      GridPane.vgrow="ALWAYS"/>
+                        <!-- columns: left labels, right inputs -->
+                        <columnConstraints>
+                            <ColumnConstraints minWidth="180" halignment="RIGHT"/>
+                            <ColumnConstraints hgrow="ALWAYS"/>
+                        </columnConstraints>
 
-            <!-- Row 7: Flags -->
-            <Label text="Flags:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
-            <HBox spacing="12" GridPane.rowIndex="7" GridPane.columnIndex="1">
-                <children>
-                    <CheckBox fx:id="chkWhitelist" text="Whitelist"/>
-                    <CheckBox fx:id="chkBlacklist" text="Blacklist"/>
-                </children>
-            </HBox>
+                        <children>
+                            <!-- Row 0: Name -->
+                            <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                            <TextField fx:id="txtName"
+                                       GridPane.rowIndex="0" GridPane.columnIndex="1"
+                                       style="-fx-background-radius: 10;
+                                              -fx-border-radius: 10;
+                                              -fx-border-color: #d0d7e2;"/>
 
-            <!-- Row 8: Buttons -->
-            <HBox spacing="10" GridPane.rowIndex="8" GridPane.columnIndex="1">
-                <children>
-                    <Button text="Save" onAction="#onSave"/>
-                    <Button text="Cancel" onAction="#onCancel"/>
-                </children>
-            </HBox>
+                            <!-- Row 1: Academic Status -->
+                            <Label text="Academic Status:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                            <ComboBox fx:id="cmbStatus"
+                                      GridPane.rowIndex="1" GridPane.columnIndex="1"
+                                      style="-fx-background-radius: 10;
+                                             -fx-border-radius: 10;
+                                             -fx-border-color: #d0d7e2;"/>
 
-        </GridPane>
+                            <!-- Row 2: Employment -->
+                            <Label text="Employment:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                            <HBox spacing="8"
+                                  GridPane.rowIndex="2" GridPane.columnIndex="1">
+                                <children>
+                                    <CheckBox fx:id="chkEmployed" text="Employed"/>
+                                    <Label text="Job Details:"/>
+                                    <TextField fx:id="txtJob" prefWidth="320"
+                                               style="-fx-background-radius: 10;
+                                                      -fx-border-radius: 10;
+                                                      -fx-border-color: #d0d7e2;"/>
+                                </children>
+                            </HBox>
+
+                            <!-- Row 3: Professional Role -->
+                            <Label text="Professional Role:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                            <ComboBox fx:id="cmbRole"
+                                      GridPane.rowIndex="3" GridPane.columnIndex="1"
+                                      style="-fx-background-radius: 10;
+                                             -fx-border-radius: 10;
+                                             -fx-border-color: #d0d7e2;"/>
+
+                            <!-- Row 4: Languages (multi-select) -->
+                            <Label text="Languages:"
+                                   GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                            <ListView fx:id="lstLanguages"
+                                      GridPane.rowIndex="4" GridPane.columnIndex="1"
+                                      prefHeight="110"
+                                      style="-fx-background-radius: 10;
+                                             -fx-border-radius: 10;
+                                             -fx-border-color: #d0d7e2;"/>
+
+                            <!-- Row 5: Databases (multi-select) -->
+                            <Label text="Databases:"
+                                   GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                            <ListView fx:id="lstDatabases"
+                                      GridPane.rowIndex="5" GridPane.columnIndex="1"
+                                      prefHeight="110"
+                                      style="-fx-background-radius: 10;
+                                             -fx-border-radius: 10;
+                                             -fx-border-color: #d0d7e2;"/>
+
+                            <!-- Row 6: Faculty Evaluation -->
+                            <Label text="Faculty Evaluation"
+                                   GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                            <TextArea fx:id="txtFacultyEval"
+                                      GridPane.rowIndex="6" GridPane.columnIndex="1"
+                                      prefRowCount="4"
+                                      wrapText="true"
+                                      promptText="Add a faculty evaluation..."
+                                      GridPane.vgrow="ALWAYS"
+                                      style="-fx-background-radius: 10;
+                                             -fx-border-radius: 10;
+                                             -fx-border-color: #d0d7e2;"/>
+
+                            <!-- Row 7: Flags -->
+                            <Label text="Flags:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+                            <HBox spacing="12"
+                                  GridPane.rowIndex="7" GridPane.columnIndex="1">
+                                <children>
+                                    <CheckBox fx:id="chkWhitelist" text="Whitelist"/>
+                                    <CheckBox fx:id="chkBlacklist" text="Blacklist"/>
+                                </children>
+                            </HBox>
+
+                            <!-- Row 8: Buttons -->
+                            <HBox spacing="10"
+                                  GridPane.rowIndex="8" GridPane.columnIndex="1">
+                                <children>
+                                    <Region HBox.hgrow="ALWAYS"/>
+
+                                    <Button text="Cancel"
+                                            onAction="#onCancel"
+                                            prefHeight="32" prefWidth="90"
+                                            style="-fx-background-color: #ffffff;
+                                                   -fx-border-color: #d0d7e2;
+                                                   -fx-border-radius: 999;
+                                                   -fx-background-radius: 999;
+                                                   -fx-text-fill: #4c5563;"/>
+
+                                    <Button text="Save"
+                                            onAction="#onSave"
+                                            prefHeight="32" prefWidth="90"
+                                            style="-fx-background-color: #ff8a3d;
+                                                   -fx-text-fill: white;
+                                                   -fx-font-weight: bold;
+                                                   -fx-background-radius: 999;
+                                                   -fx-border-radius: 999;"/>
+                                </children>
+                            </HBox>
+                        </children>
+                    </GridPane>
+                </VBox>
+            </children>
+        </VBox>
     </center>
 </BorderPane>

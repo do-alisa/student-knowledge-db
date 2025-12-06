@@ -11,64 +11,110 @@
            xmlns:fx="http://javafx.com/fxml"
            fx:controller="cs151.application.MainController"
            prefWidth="1000" prefHeight="650"
-           style="-fx-background-color: #f5f5f5;">
+           style="-fx-background-color: linear-gradient(to bottom, #f7f9fc, #e3f0ff);">
 
     <padding>
-        <Insets top="24.0" right="24.0" bottom="24.0" left="24.0"/>
+        <Insets top="32.0" right="32.0" bottom="32.0" left="32.0"/>
     </padding>
 
-    <!-- ================== Center Content ================== -->
-    <VBox alignment="CENTER" spacing="20" fillWidth="false">
-        <padding>
-            <Insets top="16.0" bottom="16.0"/>
-        </padding>
+    <!-- ================== Center Card ================== -->
+    <VBox alignment="CENTER">
+        <children>
 
-        <!-- Title -->
-        <Label text="StudentKnowledgeDB">
-            <font>
-                <Font size="42.0"/>
-            </font>
-        </Label>
+            <!-- Main card -->
+            <VBox alignment="CENTER" spacing="20" maxWidth="420"
+                  style="-fx-background-color: #ffffff;
+                         -fx-background-radius: 24;
+                         -fx-padding: 28 32 32 32;
+                         -fx-effect: dropshadow(gaussian, rgba(15,76,129,0.18), 24, 0.2, 0, 8);
+                         -fx-spacing: 20;">
+                <children>
 
-        <!-- Define Programming Languages -->
-        <Button text="Define Programming Languages"
-                onAction="#onGoToDefinePage"
-                prefWidth="280" prefHeight="36"
-                style="-fx-background-color: #FFFFFF;
-                       -fx-text-fill: black;
-                       -fx-border-color: black;
-                       -fx-border-radius: 6;
-                       -fx-background-radius: 6;"/>
+                    <!-- App Title + Subtitle -->
+                    <VBox alignment="CENTER" spacing="6">
+                        <children>
+                            <Label text="StudentKnowledgeDB"
+                                   style="-fx-text-fill: #0f4c81;">
+                                <font>
+                                    <Font size="32.0"/>
+                                </font>
+                            </Label>
 
-        <!-- Create Student Profile -->
-        <Button text="Create Student Profile"
-                onAction="#onGoToCreateProfile"
-                prefWidth="280" prefHeight="36"
-                style="-fx-background-color: #FFFFFF;
-                       -fx-text-fill: black;
-                       -fx-border-color: black;
-                       -fx-border-radius: 6;
-                       -fx-background-radius: 6;"/>
+                            <Label text="Efficiently organize and explore student knowledge records ✨"
+                                   style="-fx-text-fill: #6d7a8c;">
+                                <font>
+                                    <Font size="13.0"/>
+                                </font>
+                            </Label>
+                        </children>
+                    </VBox>
 
-        <!-- Search Students Profiles -->
-        <Button text="Search Students Profiles"
-                onAction="#onGoToSearchPage"
-                prefWidth="280" prefHeight="36"
-                style="-fx-background-color: #FFFFFF;
-                       -fx-text-fill: black;
-                       -fx-border-color: black;
-                       -fx-border-radius: 6;
-                       -fx-background-radius: 6;"/>
+                    <!-- Button Group -->
+                    <VBox alignment="CENTER" spacing="12">
+                        <padding>
+                            <Insets top="10.0" bottom="4.0"/>
+                        </padding>
 
-        <!-- Reports -->
-        <Button text="Reports"
-                onAction="#onGoToReportsPage"
-                prefWidth="280" prefHeight="36"
-                style="-fx-background-color: #FFFFFF;
-               -fx-text-fill: black;
-               -fx-border-color: black;
-               -fx-border-radius: 6;
-               -fx-background-radius: 6;"/>
+                        <!-- Create Student Profile (highlighted outlined button) -->
+                        <Button text="Create Student Profile"
+                                onAction="#onGoToCreateProfile"
+                                prefWidth="320" prefHeight="40"
+                                style="-fx-background-color: #ffffff;
+                   -fx-text-fill: #0f4c81;
+                   -fx-font-size: 14px;
+                   -fx-border-color: #ff8a3d;
+                   -fx-border-width: 1.5;
+                   -fx-border-radius: 999;
+                   -fx-background-radius: 999;
+                   -fx-padding: 8 18 8 18;
+                   -fx-cursor: hand;"/>
 
+                        <!-- Define Programming Languages -->
+                        <Button text="Define Programming Languages"
+                                onAction="#onGoToDefinePage"
+                                prefWidth="320" prefHeight="40"
+                                style="-fx-background-color: #0f4c81;
+                   -fx-text-fill: white;
+                   -fx-font-size: 14px;
+                   -fx-background-radius: 999;
+                   -fx-padding: 8 18 8 18;
+                   -fx-cursor: hand;"/>
+
+                        <!-- Search Student Profiles -->
+                        <Button text="Search Student Profiles"
+                                onAction="#onGoToSearchPage"
+                                prefWidth="320" prefHeight="40"
+                                style="-fx-background-color: #0f4c81;
+                   -fx-text-fill: white;
+                   -fx-font-size: 14px;
+                   -fx-background-radius: 999;
+                   -fx-padding: 8 18 8 18;
+                   -fx-cursor: hand;"/>
+
+                        <!-- Reports -->
+                        <Button text="Reports"
+                                onAction="#onGoToReportsPage"
+                                prefWidth="320" prefHeight="40"
+                                style="-fx-background-color: #ff8a3d;
+                   -fx-text-fill: white;
+                   -fx-font-size: 14px;
+                   -fx-background-radius: 999;
+                   -fx-padding: 8 18 8 18;
+                   -fx-cursor: hand;"/>
+                    </VBox>
+
+
+                    <!-- Tiny footer text -->
+                    <Label text="Tip: Start by defining languages, then create student profiles."
+                           style="-fx-text-fill: #9aa5b5;">
+                        <font>
+                            <Font size="11.0"/>
+                        </font>
+                    </Label>
+
+                </children>
+            </VBox>
+
+        </children>
     </VBox>
 </StackPane>

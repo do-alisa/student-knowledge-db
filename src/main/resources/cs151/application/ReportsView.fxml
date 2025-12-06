@@ -9,51 +9,102 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="cs151.application.ReportsController"
             prefWidth="1000" prefHeight="650"
-            style="-fx-background-color: #f5f5f5;">
+            style="-fx-background-color: linear-gradient(to bottom, #f7f9fc, #e3f0ff);">
 
     <!-- Header -->
     <top>
-        <HBox spacing="16" alignment="CENTER_LEFT" style="-fx-padding: 16;">
-            <Label text="Reports">
-                <font><Font size="28"/></font>
+        <HBox spacing="16" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="16" right="24" bottom="8" left="24"/>
+            </padding>
+
+            <!-- Back/Home button -->
+            <Button text="← Home"
+                    onAction="#onBackToHome"
+                    style="-fx-background-color: #ffffff;
+                           -fx-font-size: 12;
+                           -fx-background-radius: 999;
+                           -fx-border-color: #0f4c81;
+                           -fx-border-radius: 999;
+                           -fx-text-fill: #0f4c81;
+                           -fx-padding: 4 14 4 14;"/>
+
+            <Label text="Reports" style="-fx-text-fill: #0f4c81;">
+                <font>
+                    <Font size="24"/>
+                </font>
             </Label>
+
             <Pane HBox.hgrow="ALWAYS"/>
-            <Button text="Back to Home" onAction="#onBackToHome"
-                    style="-fx-background-color: #FFFFFF; -fx-border-color: black; -fx-border-radius: 6; -fx-background-radius: 6;"/>
         </HBox>
     </top>
 
-    <!-- Controls + Table -->
+    <!-- Controls + Table in a card -->
     <center>
-        <VBox spacing="14" style="-fx-padding: 0 16 16 16;">
-            <!-- Filter row -->
-            <HBox spacing="16" alignment="CENTER_LEFT">
-                <Label text="Show:"/>
-                <!-- ToggleGroup is set in controller -->
-                <RadioButton fx:id="rbWhitelist" text="Whitelisted" selected="true" onAction="#onToggle"/>
-                <RadioButton fx:id="rbBlacklist" text="Blacklisted" onAction="#onToggle"/>
-                <Pane HBox.hgrow="ALWAYS"/>
-                <Button text="Refresh" onAction="#onRefresh"
-                        style="-fx-background-color: #FFFFFF; -fx-border-color: black; -fx-border-radius: 6; -fx-background-radius: 6;"/>
-            </HBox>
+        <VBox alignment="TOP_CENTER">
+            <padding>
+                <Insets top="8" right="24" bottom="24" left="24"/>
+            </padding>
+            <children>
+                <VBox spacing="14"
+                      maxWidth="1000"
+                      style="-fx-background-color: #ffffff;
+                             -fx-background-radius: 24;
+                             -fx-padding: 20 24 24 24;
+                             -fx-effect: dropshadow(gaussian, rgba(15,76,129,0.16), 24, 0.2, 0, 8);">
 
-            <!-- Table (note: no columnResizePolicy attribute here) -->
-            <TableView fx:id="table" prefHeight="560">
-                <placeholder>
-                    <Label text="No students found for this report."/>
-                </placeholder>
+                    <!-- Filter row -->
+                    <HBox spacing="16" alignment="CENTER_LEFT">
+                        <Label text="Show:"
+                               style="-fx-text-fill:#444;"/>
 
-                <columns>
-                    <TableColumn fx:id="colName" text="Full Name" prefWidth="180"/>
-                    <TableColumn fx:id="colStatus" text="Academic Status" prefWidth="120"/>
-                    <TableColumn fx:id="colEmployed" text="Employed" prefWidth="80"/>
-                    <TableColumn fx:id="colJob" text="Job Details" prefWidth="160"/>
-                    <TableColumn fx:id="colLangs" text="Languages" prefWidth="180"/>
-                    <TableColumn fx:id="colDBs" text="Databases" prefWidth="160"/>
-                    <TableColumn fx:id="colRole" text="Preferred Role" prefWidth="120"/>
-                    <TableColumn fx:id="colFlag" text="Flag" prefWidth="90"/>
-                </columns>
-            </TableView>
+                        <!-- ToggleGroup is set in controller -->
+                        <RadioButton fx:id="rbWhitelist"
+                                     text="Whitelisted"
+                                     selected="true"
+                                     onAction="#onToggle"/>
+                        <RadioButton fx:id="rbBlacklist"
+                                     text="Blacklisted"
+                                     onAction="#onToggle"/>
+
+                        <Pane HBox.hgrow="ALWAYS"/>
+
+                        <Button text="Refresh"
+                                onAction="#onRefresh"
+                                style="-fx-background-color: #ff8a3d;
+                                       -fx-text-fill: white;
+                                       -fx-font-size: 12;
+                                       -fx-font-weight: bold;
+                                       -fx-background-radius: 999;
+                                       -fx-border-radius: 999;
+                                       -fx-padding: 6 16 6 16;"/>
+                    </HBox>
+
+                    <!-- Table -->
+                    <TableView fx:id="table"
+                               prefHeight="520"
+                               VBox.vgrow="ALWAYS"
+                               style="-fx-background-radius: 12;
+                                      -fx-border-radius: 12;
+                                      -fx-border-color: #d0d7e2;">
+                        <placeholder>
+                            <Label text="No students found for this report."
+                                   style="-fx-text-fill:#9aa5b5;"/>
+                        </placeholder>
+
+                        <columns>
+                            <TableColumn fx:id="colName"   text="Full Name"       prefWidth="180"/>
+                            <TableColumn fx:id="colStatus" text="Academic Status" prefWidth="120"/>
+                            <TableColumn fx:id="colEmployed" text="Employed"      prefWidth="80"/>
+                            <TableColumn fx:id="colJob"    text="Job Details"     prefWidth="160"/>
+                            <TableColumn fx:id="colLangs"  text="Languages"       prefWidth="180"/>
+                            <TableColumn fx:id="colDBs"    text="Databases"       prefWidth="160"/>
+                            <TableColumn fx:id="colRole"   text="Preferred Role"  prefWidth="120"/>
+                            <TableColumn fx:id="colFlag"   text="Flag"            prefWidth="90"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </children>
         </VBox>
     </center>
 </BorderPane>

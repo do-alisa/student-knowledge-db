@@ -8,87 +8,162 @@
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="cs151.application.SearchProfilesController"
-      spacing="12" fillWidth="true">
-
-    <Button onAction="#onBack" prefHeight="36" prefWidth="70"
-            style="-fx-background-color: #FFFFFF; -fx-font-size: 12; -fx-background-radius: 6; -fx-border-color: black; -fx-border-radius: 6; -fx-text-fill: #333;"
-            text="Home" />
+      spacing="24"
+      alignment="TOP_CENTER"
+      fillWidth="true"
+      prefWidth="1000" prefHeight="650"
+      style="-fx-background-color: linear-gradient(to bottom, #f7f9fc, #e3f0ff);">
 
     <padding>
-        <Insets top="20" right="20" bottom="20" left="20"/>
+        <Insets top="24" right="24" bottom="24" left="24"/>
     </padding>
 
-    <HBox alignment="CENTER">
-        <Label text="Search Students Profiles">
-            <font><Font size="42" /></font>
-        </Label>
+    <!-- Top bar: Home button aligned left -->
+    <HBox alignment="CENTER_LEFT" maxWidth="1000">
+        <children>
+            <Button onAction="#onBack"
+                    prefHeight="28" prefWidth="90"
+                    text="← Home"
+                    style="-fx-background-color: #ffffff;
+                           -fx-font-size: 12;
+                           -fx-background-radius: 999;
+                           -fx-border-color: #0f4c81;
+                           -fx-border-radius: 999;
+                           -fx-text-fill: #0f4c81;
+                           -fx-padding: 4 14 4 14;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+        </children>
     </HBox>
 
-    <!-- ===================== Search Filters ===================== -->
-    <TitledPane text="Student Profile Filters" expanded="true">
-        <content>
-            <GridPane hgap="10" vgap="10">
-                <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+    <!-- Main card -->
+    <VBox spacing="18"
+          maxWidth="1000"
+          style="-fx-background-color: #ffffff;
+                 -fx-background-radius: 24;
+                 -fx-padding: 24 28 28 28;
+                 -fx-effect: dropshadow(gaussian, rgba(15,76,129,0.16), 24, 0.2, 0, 8);">
 
-                <columnConstraints>
-                    <ColumnConstraints percentWidth="22"/>
-                    <ColumnConstraints percentWidth="78"/>
-                </columnConstraints>
+        <!-- Title -->
+        <VBox spacing="4" alignment="CENTER_LEFT">
+            <children>
+                <Label text="Search Student Profiles"
+                       style="-fx-text-fill: #0f4c81;">
+                    <font>
+                        <Font size="26"/>
+                    </font>
+                </Label>
+                <Label text="Filter, review, and manage existing student records."
+                       style="-fx-text-fill: #6d7a8c;">
+                    <font>
+                        <Font size="13"/>
+                    </font>
+                </Label>
+            </children>
+        </VBox>
 
-                <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                <TextField fx:id="nameLike" promptText="Search by name..."
-                           GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        <Separator/>
 
-                <Label text="Academic Status:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-                <ChoiceBox fx:id="statusChoice" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        <!-- ===================== Search Filters ===================== -->
+        <TitledPane text="Student Profile Filters" expanded="true">
+            <content>
+                <GridPane hgap="10" vgap="10">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
 
-                <Label text="Employment:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-                <ChoiceBox fx:id="employmentChoice" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="22"/>
+                        <ColumnConstraints percentWidth="78"/>
+                    </columnConstraints>
 
-                <Label text="Programming Languages:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-                <ChoiceBox fx:id="languagesChoice" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                    <children>
+                        <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="nameLike"
+                                   promptText="Search by name..."
+                                   GridPane.rowIndex="0" GridPane.columnIndex="1"/>
 
-                <Label text="Databases:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
-                <ChoiceBox fx:id="databasesChoice" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                        <Label text="Academic Status:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <ChoiceBox fx:id="statusChoice"
+                                   GridPane.rowIndex="1" GridPane.columnIndex="1"/>
 
-                <Label text="Professional Role:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
-                <ChoiceBox fx:id="roleChoice" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+                        <Label text="Employment:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <ChoiceBox fx:id="employmentChoice"
+                                   GridPane.rowIndex="2" GridPane.columnIndex="1"/>
 
-                <HBox spacing="10" GridPane.rowIndex="6" GridPane.columnIndex="1">
-                    <CheckBox fx:id="whitelistOnly" text="Whitelist only"/>
-                    <CheckBox fx:id="blacklistOnly" text="Blacklist only"/>
-                    <Button onAction="#onSearch" text="Search" prefHeight="30" prefWidth="52"
-                            style="-fx-background-color: #FFFFFF; -fx-font-size: 10; -fx-background-radius: 6; -fx-border-color: black; -fx-border-radius: 6; -fx-text-fill: #333;"/>
-                    <Button onAction="#onClear" text="Clear" prefHeight="30" prefWidth="52"
-                            style="-fx-background-color: #FFFFFF; -fx-font-size: 10; -fx-background-radius: 6; -fx-border-color: black; -fx-border-radius: 6; -fx-text-fill: #333;"/>
-                </HBox>
-            </GridPane>
-        </content>
-    </TitledPane>
+                        <Label text="Programming Languages:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <ChoiceBox fx:id="languagesChoice"
+                                   GridPane.rowIndex="3" GridPane.columnIndex="1"/>
 
-    <!-- ===================== TableView ===================== -->
-    <TableView fx:id="table" prefHeight="420" VBox.vgrow="ALWAYS">
-        <columns>
-            <!-- Action column (View/Edit) at far left -->
-            <TableColumn fx:id="actionCol" text="Action" prefWidth="100"/>
+                        <Label text="Databases:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                        <ChoiceBox fx:id="databasesChoice"
+                                   GridPane.rowIndex="4" GridPane.columnIndex="1"/>
 
-            <TableColumn fx:id="delCol" text="Delete" prefWidth="90"/>
+                        <Label text="Professional Role:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                        <ChoiceBox fx:id="roleChoice"
+                                   GridPane.rowIndex="5" GridPane.columnIndex="1"/>
 
-            <TableColumn fx:id="nameCol"   text="Name"       prefWidth="160"/>
-            <TableColumn fx:id="statusCol" text="Status"     prefWidth="120"/>
-            <TableColumn fx:id="empCol"    text="Employment" prefWidth="130"/>
-            <TableColumn fx:id="jobCol"    text="Job Details" prefWidth="220"/>
-            <TableColumn fx:id="langsCol"  text="Languages"  prefWidth="180"/>
-            <TableColumn fx:id="dbsCol"    text="Databases"  prefWidth="200"/>
-            <TableColumn fx:id="roleCol"   text="Role"       prefWidth="120"/>
+                        <HBox spacing="10"
+                              GridPane.rowIndex="6" GridPane.columnIndex="1">
+                            <children>
+                                <CheckBox fx:id="whitelistOnly" text="Whitelist only"/>
+                                <CheckBox fx:id="blacklistOnly" text="Blacklist only"/>
 
-            <!-- NEW: Faculty Evaluation column -->
-            <TableColumn fx:id="facultyCol" text="Faculty Eval" prefWidth="220"/>
+                                <Region HBox.hgrow="ALWAYS"/>
 
-            <TableColumn fx:id="wlCol"     text="WL"         prefWidth="60"/>
-            <TableColumn fx:id="blCol"     text="BL"         prefWidth="60"/>
-            <TableColumn fx:id="colComments" text="Comments" prefWidth="120"/>
+                                <Button onAction="#onSearch"
+                                        text="Search"
+                                        prefHeight="30" prefWidth="72"
+                                        style="-fx-background-color: #0f4c81;
+                                               -fx-font-size: 12;
+                                               -fx-background-radius: 999;
+                                               -fx-text-fill: white;"/>
 
-        </columns>
-    </TableView>
+                                <Button onAction="#onClear"
+                                        text="Clear"
+                                        prefHeight="30" prefWidth="72"
+                                        style="-fx-background-color: #ffffff;
+                                               -fx-font-size: 12;
+                                               -fx-background-radius: 999;
+                                               -fx-border-color: #d0d7e2;
+                                               -fx-border-radius: 999;
+                                               -fx-text-fill: #4c5563;"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </GridPane>
+            </content>
+        </TitledPane>
+
+        <!-- ===================== TableView ===================== -->
+        <TableView fx:id="table"
+                   prefHeight="420"
+                   VBox.vgrow="ALWAYS"
+                   style="-fx-background-radius: 12;
+                          -fx-border-radius: 12;
+                          -fx-border-color: #d0d7e2;">
+            <columns>
+                <!-- Action column (View/Edit) at far left -->
+                <TableColumn fx:id="actionCol" text="Action" prefWidth="100"/>
+
+                <TableColumn fx:id="delCol" text="Delete" prefWidth="90"/>
+
+                <TableColumn fx:id="nameCol"   text="Name"        prefWidth="160"/>
+                <TableColumn fx:id="statusCol" text="Status"      prefWidth="120"/>
+                <TableColumn fx:id="empCol"    text="Employment"  prefWidth="130"/>
+                <TableColumn fx:id="jobCol"    text="Job Details" prefWidth="220"/>
+                <TableColumn fx:id="langsCol"  text="Languages"   prefWidth="180"/>
+                <TableColumn fx:id="dbsCol"    text="Databases"   prefWidth="200"/>
+                <TableColumn fx:id="roleCol"   text="Role"        prefWidth="120"/>
+
+                <!-- Faculty Evaluation column -->
+                <TableColumn fx:id="facultyCol" text="Faculty Eval" prefWidth="220"/>
+
+                <TableColumn fx:id="wlCol"     text="WL"          prefWidth="60"/>
+                <TableColumn fx:id="blCol"     text="BL"          prefWidth="60"/>
+                <TableColumn fx:id="colComments" text="Comments"  prefWidth="120"/>
+            </columns>
+        </TableView>
+
+    </VBox>
+
 </VBox>

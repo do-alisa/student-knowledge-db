@@ -8,42 +8,110 @@
 <VBox alignment="TOP_CENTER" spacing="24"
       xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="cs151.application.MainController">
+      fx:controller="cs151.application.MainController"
+      prefWidth="1000" prefHeight="650"
+      style="-fx-background-color: linear-gradient(to bottom, #f7f9fc, #e3f0ff);">
 
     <padding>
         <Insets bottom="24" left="24" right="24" top="24" />
     </padding>
 
-    <!-- Back (top-left) -->
-    <HBox alignment="CENTER_LEFT" maxWidth="Infinity">
-        <Button onAction="#onBackToHome" prefHeight="36" prefWidth="70" style="-fx-background-color: #FFFFFF;                        -fx-font-size: 12;                        -fx-background-radius: 6;                        -fx-border-color: black;                        -fx-border-radius: 6;                        -fx-text-fill: #333;" text="Home" />
+    <!-- Top bar: back button + title -->
+    <HBox alignment="CENTER_LEFT" maxWidth="820">
+        <children>
+            <Button onAction="#onBackToHome"
+                    prefHeight="28" prefWidth="90"
+                    text="← Home"
+                    style="-fx-background-color: #ffffff;
+                           -fx-font-size: 12;
+                           -fx-background-radius: 999;
+                           -fx-border-color: #0f4c81;
+                           -fx-border-radius: 999;
+                           -fx-text-fill: #0f4c81;
+                           -fx-padding: 4 14 4 14;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+        </children>
     </HBox>
 
-    <!-- Title -->
-    <Label text="Define Programming Languages">
-        <font><Font size="42" /></font>
-    </Label>
+    <!-- Main card -->
+    <VBox spacing="20" maxWidth="820"
+          style="-fx-background-color: #ffffff;
+                 -fx-background-radius: 24;
+                 -fx-padding: 24 28 28 28;
+                 -fx-effect: dropshadow(gaussian, rgba(15,76,129,0.18), 24, 0.2, 0, 8);">
 
-    <!-- Field label -->
-    <Label text="Enter Programming Languages">
-        <font><Font size="20" /></font>
-    </Label>
+        <!-- Title -->
+        <VBox spacing="4" alignment="CENTER_LEFT">
+            <children>
+                <Label text="Define Programming Languages"
+                       style="-fx-text-fill: #0f4c81;">
+                    <font>
+                        <Font size="26" />
+                    </font>
+                </Label>
+                <Label text="Add and manage the programming languages available in the system."
+                       style="-fx-text-fill: #6d7a8c;">
+                    <font>
+                        <Font size="13" />
+                    </font>
+                </Label>
+            </children>
+        </VBox>
 
-    <!-- Input -->
-    <TextField fx:id="nameInput" prefWidth="820" promptText="Enter your language: Java, Python, etc." style="-fx-font-size:16;" />
+        <Separator/>
 
-    <!-- Buttons (centered) -->
-    <HBox alignment="CENTER" spacing="24">
-        <Button onAction="#onCancelForm" prefHeight="36" prefWidth="140" style="-fx-background-color: transparent;                        -fx-border-color: #BDBDBD;                        -fx-border-radius: 6;                        -fx-background-radius: 6;                        -fx-text-fill: #333;" text="Cancel" />
-        <Button onAction="#onSubmitLanguage" prefHeight="36" prefWidth="140" style="-fx-background-color: #000000;                        -fx-text-fill: white;                        -fx-background-radius: 6;" text="Submit" />
-    </HBox>
+        <!-- Field label -->
+        <Label text="Enter Programming Languages"
+               style="-fx-font-size:14px; -fx-font-weight:bold; -fx-text-fill:#0f4c81;"/>
 
-    <VBox maxWidth="820" spacing="8">
-    <TableView fx:id="langTable" prefHeight="320">
-        <columns>
-            <TableColumn fx:id="nameCol" prefWidth="800" text="Saved Programming Languages" />
-        </columns>
-    </TableView>
-</VBox>
+        <!-- Input -->
+        <TextField fx:id="nameInput"
+                   prefWidth="820"
+                   promptText="Enter a language: Java, Python, etc."
+                   style="-fx-font-size:14;
+                          -fx-background-radius: 10;
+                          -fx-border-radius: 10;
+                          -fx-border-color: #d0d7e2;"/>
+
+        <!-- Buttons (right-aligned) -->
+        <HBox alignment="CENTER_RIGHT" spacing="12">
+            <children>
+                <Button onAction="#onCancelForm"
+                        prefHeight="36" prefWidth="120"
+                        text="Cancel"
+                        style="-fx-background-color: #ffffff;
+                               -fx-border-color: #d0d7e2;
+                               -fx-border-radius: 999;
+                               -fx-background-radius: 999;
+                               -fx-text-fill: #4c5563;"/>
+
+                <Button onAction="#onSubmitLanguage"
+                        prefHeight="36" prefWidth="120"
+                        text="Submit"
+                        style="-fx-background-color: #ff8a3d;
+                               -fx-text-fill: white;
+                               -fx-font-weight: bold;
+                               -fx-background-radius: 999;
+                               -fx-border-radius: 999;"/>
+            </children>
+        </HBox>
+
+        <!-- Table card -->
+        <VBox maxWidth="820" spacing="8">
+            <Label text="Saved Programming Languages"
+                   style="-fx-font-weight:bold; -fx-text-fill:#0f4c81;"/>
+            <TableView fx:id="langTable" prefHeight="320"
+                       style="-fx-background-radius: 12;
+                              -fx-border-radius: 12;
+                              -fx-border-color: #d0d7e2;">
+                <columns>
+                    <TableColumn fx:id="nameCol"
+                                 prefWidth="800"
+                                 text="Language Name" />
+                </columns>
+            </TableView>
+        </VBox>
+
+    </VBox>
 
 </VBox>
